@@ -31,7 +31,7 @@ import peasy.org.apache.commons.math.*;
 import peasy.org.apache.commons.math.geometry.*;
 import peasy.test.*;
 PeasyCam cam;
-float objectSize;
+float objectSize = 10;
 boolean boxParameters = false;
 boolean sphereParameters = false;
 float colourR = 100;
@@ -40,7 +40,7 @@ float colourB = 100;
 float[] spheres;
 void setup() 
 { 
-  frameRate(0.5);
+  //frameRate(0.5);
   fullScreen(P3D);
   cam = new PeasyCam(this, 100);
   cam.setMinimumDistance(50);
@@ -51,17 +51,22 @@ void draw()
 {
   for (int i = 0; i < 60; i++) 
   {
-  rotateX(-.5);
-  rotateY(-.5);
-  background(0);
+    rotateX(-.5);
+    rotateY(-.5);
+    background(0);
+  }
   fill(colourR, colourG, colourB);
   //sphere(objectSize);
   pushMatrix();
-  //translate(0, 0, 0);
+  translate(0, 0, 0);
   popMatrix();
-  translate(i,i,i);
+  translate(random(255), random(255), 0);
   sphere(objectSize);
-  }
+ translate(random(255), random(255), 0);
+ sphere(objectSize);
+ translate(random(255), random(255), 0);
+ sphere(objectSize);
+  
 }
 
 
