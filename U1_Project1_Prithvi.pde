@@ -14,13 +14,16 @@ Hi, welcome to the Art Space by Prithvi.
  
  */
 
-//Minim Library
+//importing Minim
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
+Minim minim;
+AudioPlayer song;
+AudioPlayer input;
 //importing peasycam
 import peasy.*;
 import peasy.org.apache.commons.math.*;
@@ -45,6 +48,10 @@ void setup()
   cam.setMinimumDistance(50);
   cam.setMaximumDistance(500);
 
+  minim = new Minim(this);
+  song = minim.loadFile("Quinn - Native Tongue.mp3");
+  song.play();
+  
   sphereArray = new float[100];
 }
 void draw() 
@@ -58,8 +65,6 @@ void draw()
   rotateY(yRotate);
   yRotate += 100;
   
-  
-  
   }
   if(sphereParameters == false)
   {
@@ -71,16 +76,16 @@ void draw()
 if(boxParameters == true)
 {
  sphereParameters = false;
- makeBox();
+ MakeBox();
 }
 if(sphereParameters == true)
 {
+  //background(0);
 for (float i = 0; i < 100; i++)
 {
- translate(10,10,10);
+  translate(10,10,10);
   sphere(0.75);
   translate(random(i), random(i), random(i));
-  
 }
 }
 }
@@ -135,7 +140,7 @@ if(boxParameters == true)
 
 
 //custom function
-void makeBox()
+void MakeBox()
 {
   background(0);
   box(objectSize);
